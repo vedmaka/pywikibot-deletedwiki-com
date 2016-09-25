@@ -76,7 +76,7 @@ class Antidelete:
 
 
     def recover_article(self, title):
-        print "Recovering: " + title[:100]
+        print "Recovering: " + title[:100].encode('utf-8')
         if 'Talk' in title:
             print 'no talk pages yet'
             return
@@ -84,10 +84,10 @@ class Antidelete:
         try:
             article_text = page.get()
         except IsRedirectPage:
-            print 'IsRedirectPage?', title
+            print 'IsRedirectPage?', title.encode('utf-8')
             return
         except NoPage:
-            print 'PROBABLY deleted already...', title
+            print 'PROBABLY deleted already...', title.encode('utf-8')
             return
 
         if not 'porn' in article_text and not 'xxx' in article_text:
@@ -103,10 +103,10 @@ class Antidelete:
                 update_page = True
             if update_page:
                 if self.patterns['test'] in article_text:
-                    msg = 'inclusion power'
+                    msg = 'Recovered from Wikipedia Deletion List'
                 else:
                     article_text = "{{survived}}"
-                    msg = 'survived on Wikipedia'
+                    msg = 'This page has survived on Wikipedia'
                 dp_page.put(article_text, msg)
 
 
