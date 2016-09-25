@@ -13,7 +13,6 @@ logs*
 /cache*
 .idea
 pywikibot.egg-info/
-pywikibot/families/
 build
 dist
 /password.txt
