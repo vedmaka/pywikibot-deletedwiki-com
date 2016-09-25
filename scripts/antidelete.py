@@ -53,7 +53,8 @@ class Antidelete:
         if 'locale' in self.patterns:
             setlocale(LC_TIME, 'de_DE') #self.patterns['locale'])
         else:
-            setlocale(locale.LC_TIME, 'american') #'en_US.utf8')
+            #setlocale(locale.LC_TIME, 'american') #'en_US.utf8')
+            setlocale(LC_TIME, 'en_US.utf8')
         pagename = self.patterns['fn_day'](day)
         fn_title = 'fn_title' in self.patterns and self.patterns['fn_title'] or None
         self.parse_list(pagename, title_process = fn_title)
